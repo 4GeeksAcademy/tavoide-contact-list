@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import Contact from "./Contact.jsx";
 
@@ -31,28 +31,34 @@ const AddContact = () => {
   };
   return (
     <div className='container'>
+      <h1>AGREGA UN CONTACTO</h1>
+
       <form className="form-control" onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label for="name" class="form-label"> Nombre </label>
-          <input type="text" id='name' onChange={handleChange} value={contact.nombre} placeholder="Tu Nombre Completo" />
+        <div className="mb-3">
+          <label for="nombre" className="form-label"> Direccion </label><br />
+          <input className="col-12" type="text" name="nombre" onChange={handleChange} value={contact.nombre} placeholder="Tu Nombre Completo" />
         </div>
 
-        <div class="mb-3">
-          <label for="ubi" class="form-label"> Direccion </label>
-          <input type="text" id='ubi' onChange={handleChange} value={contact.direccion} placeholder="Tu Direccion" />
+        <div className="mb-3">
+          <label for="ubi" className="form-label"> Direccion </label><br />
+          <input className="col-12" type="text" name="direccion" onChange={handleChange} value={contact.direccion} placeholder="Tu Direccion" />
         </div>
 
-        <div class="mb-3">
-          <label for="phone" class="form-label">Telefono</label>
-          <input type="number" id='phone' onChange={handleChange} value={contact.telefono} placeholder="Tu Telefono" />
+        <div className="mb-3">
+          <label for="phone" className="form-label">Telefono</label><br />
+          <input className="col-12" type="number" name="telefono" onChange={handleChange} value={contact.telefono} placeholder="Tu Telefono" />
         </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" id='email' onChange={handleChange} value={contact.email} placeholder="Tu Email" />
+        <div className="mb-3">
+          <label for="email" className="form-label">Email</label><br />
+          <input className="col-12" type="email" name="email" onChange={handleChange} value={contact.email} placeholder="Tu Email" />
         </div>
-        <button className='btn btn-primary col-12' type='submit'>Guardar</button>
+        <button className='btn btn-primary mb-2 col-12' type='submit'>Guardar</button>
+        <Link to={`/`}>
+          <button className='btn btn-secondary mb-2 col-12'>ATRAS</button>
+        </Link>
       </form>
+
     </div >
   );
 };

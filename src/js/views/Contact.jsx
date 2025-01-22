@@ -5,7 +5,7 @@ import { Context } from "../store/appContext.js";
 
 const Contact = () => {
   const { store, actions } = useContext(Context);
-  const [agendaName, setAgendaName] = useState("dannyp")
+  const [agendaName, setAgendaName] = useState("Tavoide")
     const navigate = useNavigate();
   
 
