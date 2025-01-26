@@ -51,11 +51,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("este es el contacto a ser enviado: ", contact)
 					let store= getStore();
 					console.log("este es el nombre que se concatena con el URL: ", store.currentName)
+					// const body = {
+					// 	Slug: store.currentName,
+					// 	Contacts:[
+					// 		{
+					// 			name: contact.nombre,
+					// 			phone: contact.telefono,
+					// 			email: contact.email,
+					// 			address: contact.direccion,
+					// 		},
+					// 	],
+					// };
 					const response = await fetch(`https://playground.4geeks.com/contact/agendas/${store.currentName}/contacts`, {
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify(contact),
 					});
+					console.log("Estado de la respuesta:", response.statusText)
 					if (!response.ok) {
 						throw new Error("No funciono la carga")
 					}

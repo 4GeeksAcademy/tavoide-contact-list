@@ -7,7 +7,7 @@ const EditContact = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
-  const [contact, setContact] = useState({ name: "", email: "", phone: "", address: "" });
+  const [contact, setContact] = useState({ name: "", address: "", phone: "", email: "" });
 
   useEffect(() => {
     const selectedContact = store.contacts.find((contact) => contact.id == id);
@@ -28,7 +28,7 @@ const EditContact = () => {
       await actions.updateContact(id, contact);
       navigate("/contacts");
     } catch (error) {
-      console.error("Error updating contact:", error);
+      console.error("Error al editar contacto:", error);
     }
   };
 
@@ -47,28 +47,29 @@ const EditContact = () => {
       <input
         className="mb-2 form-control"
         
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={contact.email}
+        type="text"
+        name="address"
+        placeholder="Address"
+        value={contact.address}
         onChange={handleChange}
       />
       <input
         className="mb-2 form-control"
         
-        type="text"
+        type="number"
         name="phone"
         placeholder="Phone"
         value={contact.phone}
         onChange={handleChange}
       />
+      
       <input
         className="mb-2 form-control"
         
-        type="text"
-        name="address"
-        placeholder="Address"
-        value={contact.address}
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={contact.email}
         onChange={handleChange}
       />
       <button className="btn btn-lg btn-primary col-12 my-2"  type="submit">

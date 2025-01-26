@@ -30,9 +30,9 @@ const Contact = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Contact List</h1>
-      <button onClick={addContactHandler}>Add Contact</button>
+      <button className="btn btn-success btn-lg mt-4" onClick={addContactHandler}>Add Contact</button>
       {store.contacts.map((contact) => (
         <ContactCard key={contact.id} contact={contact} />
       ))}

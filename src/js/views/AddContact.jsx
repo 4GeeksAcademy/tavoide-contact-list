@@ -7,7 +7,7 @@ import Contact from "./Contact.jsx";
 const AddContact = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
-  const [contact, setContact] = useState({ nombre: "", direccion: "", telefono: "", email: "" });
+  const [contact, setContact] = useState({ name: "", address: "", phone: "", email: "" });
 
 
 
@@ -19,6 +19,7 @@ const AddContact = () => {
     e.preventDefault();
     try {
       let resultado = await actions.addContact(contact);
+      console.log("Resultado:", resultado)
       if (resultado) {
         navigate("/contacts");
       } else {
@@ -35,18 +36,18 @@ const AddContact = () => {
 
       <form className="form-control" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label for="nombre" className="form-label"> Direccion </label><br />
-          <input className="col-12" type="text" name="nombre" onChange={handleChange} value={contact.nombre} placeholder="Tu Nombre Completo" />
+          <label for="name" className="form-label"> Nombre </label><br />
+          <input className="col-12" type="text" name="name" onChange={handleChange} value={contact.name} placeholder="Tu Nombre Completo" />
         </div>
 
         <div className="mb-3">
-          <label for="ubi" className="form-label"> Direccion </label><br />
-          <input className="col-12" type="text" name="direccion" onChange={handleChange} value={contact.direccion} placeholder="Tu Direccion" />
+          <label for="address" className="form-label"> Direccion </label><br />
+          <input className="col-12" type="text" name="address" onChange={handleChange} value={contact.address} placeholder="Tu Direccion" />
         </div>
 
         <div className="mb-3">
           <label for="phone" className="form-label">Telefono</label><br />
-          <input className="col-12" type="number" name="telefono" onChange={handleChange} value={contact.telefono} placeholder="Tu Telefono" />
+          <input className="col-12" type="number" name="phone" onChange={handleChange} value={contact.phone} placeholder="Tu Telefono" />
         </div>
 
         <div className="mb-3">
