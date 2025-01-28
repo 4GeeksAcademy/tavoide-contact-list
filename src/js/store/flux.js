@@ -29,7 +29,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (!response.ok) {
 						throw new Error("no sirvió")
 					}
-
 					const data = await response.json();
 
 					const store = getStore();
@@ -41,38 +40,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			setCurrentName: (actualName) => {
-				console.log("entro en el actions set current name y recibio: ", actualName)
 				const store= getStore();
 				setStore({...store, currentName:actualName});
 			},
 
 			addContact: async (contact) => {
 				try {
-					console.log("este es el contacto a ser enviado: ", contact)
 					let store= getStore();
-					console.log("este es el nombre que se concatena con el URL: ", store.currentName)
-					// const body = {
-					// 	Slug: store.currentName,
-					// 	Contacts:[
-					// 		{
-					// 			name: contact.nombre,
-					// 			phone: contact.telefono,
-					// 			email: contact.email,
-					// 			address: contact.direccion,
-					// 		},
-					// 	],
-					// };
+										
 					const response = await fetch(`https://playground.4geeks.com/contact/agendas/${store.currentName}/contacts`, {
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify(contact),
 					});
-					console.log("Estado de la respuesta:", response.statusText)
+					
 					if (!response.ok) {
 						throw new Error("No funciono la carga")
 					}
 					let data= await response.json();
-					console.log("esta es la data de respuesta de creacion de usuario: ", data)
 					if (data.id){
 						return true;
 					} else{
